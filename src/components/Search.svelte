@@ -1,8 +1,9 @@
 <script>
   import Picker from "../utils/picker.js";
   import { onMount } from "svelte";
-  import { storeUserHIQ } from "../utils/store.js";
+  import { storeUserHIQ, activeProgress, passAdmin } from "../utils/store.js";
 
+  let statusAdm = false;
   const production = !!process.env.NODE_ENV;
   let delayInput;
   const months = [
@@ -51,6 +52,15 @@
     if (window.localStorage.getItem("isdev") === "true") {
       getFirebaseDb("users");
     }
+
+    passAdmin.subscribe(resp => {
+      // alert(resp)
+      if (resp === "p@ssw0rd") {
+        statusAdm = true;
+      } else {
+        statusAdm = false;
+      }
+    });
   });
 
   function onInputDateChanged(event) {
@@ -67,13 +77,13 @@
     getFirebaseDb("birth", `${date}/${month}/${year}`);
   }
 
-  function onInputNameChang(event) {   
-    if(delayInput) {
-      clearInterval(delayInput)
-    } 
+  function onInputNameChang(event) {
+    if (delayInput) {
+      clearInterval(delayInput);
+    }
     delayInput = setTimeout(() => {
       const nameVal = event.target.value;
-      if(nameVal==="") {
+      if (nameVal === "") {
         storeUserHIQ.set([]);
         return;
       }
@@ -85,27 +95,22 @@
   function getFirebaseDb(type, value) {
     userHIQ = [];
     if (type === "birth") {
-      fetchFunc(
-        production
-          ? `/getusers?birth=${value}`
-          : `http://localhost:3000/getusers?birth=${value}`, 'birth'
-      );
+      fetchFunc(production ? `/getusers?birth=${value}` : `http://localhost:3000/getusers?birth=${value}`,"birth");
     } else if (type === "name") {
-      fetchFunc(
-        production
-          ? `/getusers?name=${value}`
-          : `http://localhost:3000/getusers?name=${value}`, 'name'
-      );
+      fetchFunc( production ? `/getusers?name=${value}` : `http://localhost:3000/getusers?name=${value}`, "name");
     }
   }
 
   function fetchFunc(url, type) {
+    activeProgress.set(true);
     fetch(url)
       .then(async resp => {
+        activeProgress.set(false);
         userHIQ = await resp.json();
-        storeUserHIQ.set(type === 'birth' ?  [{ key: userHIQ.keys, data: userHIQ.data}] : userHIQ || []);
+        storeUserHIQ.set((type === "birth" && userHIQ.data.id) ? [{ key: userHIQ.keys, data: userHIQ.data }] : userHIQ || []);
       })
       .catch(err => {
+        activeProgress.set(false);
         userHIQ = [];
       });
   }
@@ -127,23 +132,24 @@
   <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
     ค้นหารหัสพนักงาน
   </h2>
-
   <div class="container">
     <div class="row search">
       <div class="col-md-6" />
       <div class="col-md-6">
-        <div id="dataTables_filter" class="dataTables_filter">
-          <label class="searchInfo mbr-fonts-style display-7">
-            ค้นหาจากชื่อ-สกุล:
-          </label>
-          <input
-            on:input={event => onInputNameChang(event)}
-            type="text"
-            id="name"
-            class="form-control input-sm"
-            value=""
-            placeholder="ใส่ ชื่อ/สกุล เพื่อค้นหา" />
-        </div>
+        {#if statusAdm === true}
+          <div id="dataTables_filter" class="dataTables_filter">
+            <label class="searchInfo mbr-fonts-style display-7">
+              ค้นหาจากชื่อ-สกุล:
+            </label>
+            <input
+              on:input={event => onInputNameChang(event)}
+              type="text"
+              id="name"
+              class="form-control input-sm"
+              value=""
+              placeholder="ใส่ ชื่อ/สกุล เพื่อค้นหา" />
+          </div>
+        {/if}
         <div id="dataTables_filter" class="dataTables_filter">
           <label class="searchInfo mbr-fonts-style display-7">
             ค้นหาจากวันเกิด:
@@ -158,4 +164,5 @@
       </div>
     </div>
   </div>
+
 </div>

@@ -1,7 +1,8 @@
 <script>
   import { onMount } from "svelte";
-  import { storeUserHIQ } from '../utils/store.js';
-  let userId, displayName, statusMessage;
+  import { storeUserHIQ, activeProgress } from "../utils/store.js";
+  let userId, statusMessage = "Loading...";
+  let displayName = 'Loading...';
   let pictureUrl = "assets/images/nopicture.jpg";
   let userHIQ = [];
 
@@ -14,7 +15,7 @@
 
   function scrollingDiv(ev) {
     const element = ev.target || ev.srcElement;
-      window.scrollTo(0, document.getElementById("register").offsetTop + 700);
+      window.scrollTo(0, document.getElementById("register").offsetTop + 550);
   }
 
   function initLineLiff() {
@@ -36,7 +37,7 @@
       .getProfile()
       .then(function(profile) {
         userId = profile.userId;
-        displayName = profile.displayName;
+        displayName = profile.displayName || 'Loading...';
         pictureUrl = profile.pictureUrl;
         statusMessage = profile.statusMessage;
         // toggleProfileData();
@@ -49,6 +50,10 @@
 
 <style>
 
+  .panel-item {
+    border-radius: 10px;
+  }
+
 </style>
 
 <section
@@ -58,7 +63,7 @@
   <div
     class="mbr-overlay"
     style="opacity: 0.8; background-color: rgb(193, 193, 193);" />
-  <div class="container">
+  <!-- <div class="container">
     <div class="media-container-row">
       <div class="title col-12 align-center">
         <h2 class="pb-3 mbr-fonts-style display-2">โรซ่า</h2>
@@ -68,10 +73,10 @@
         </h3>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="container">
-    <div class="media-container-column">
+    <div class="media-container-column" style="border-radius: 25px;">
       <div class="mbr-testimonial align-center col-12 col-md-10">
         <div class="panel-item">
           <div class="card-block">
@@ -86,7 +91,7 @@
             </div>
             <p style="color:white;">สถานะ : {statusMessage}</p>
             <div class="navbar-buttons mbr-section-btn">
-              <a class="btn btn-sm btn-primary display-4" on:click={(ev) => scrollingDiv(ev) } >
+              <a style="cursor:pointer;" class="btn btn-sm btn-primary display-4" on:click={(ev) => scrollingDiv(ev) } >
                 <span
                   class="btn-icon mbri-mobile mbr-iconfont mbr-iconfont-btn" />
                 ลงทะเบียน

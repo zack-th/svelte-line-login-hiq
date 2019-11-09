@@ -3,7 +3,7 @@
   import Footer from "./Footer.svelte";
   import Navbar from "./Navbar.svelte";
   import Table from "./Table.svelte";
-  import { storeUserHIQ } from "../utils/store.js";
+  import { storeUserHIQ, activeProgress } from "../utils/store.js";
   import { onMount } from "svelte";
   import { beforeUpdate, afterUpdate } from "svelte";
 
@@ -15,11 +15,12 @@
 
   onMount(() => {
     storeUserHIQ.subscribe(resp => {
-      console.log(resp);
       if (typeof resp === "object" && resp.length > 0) {
         userFileter = resp;
+        userOneFill = [];
       } else {
         userOneFill = [resp["data"]];
+        userFileter = [];
       }
     });
   });

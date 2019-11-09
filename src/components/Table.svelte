@@ -1,44 +1,45 @@
 <script>
   import Search from "./Search.svelte";
+  import { storeUserHIQ, activeProgress } from "../utils/store.js";
   export let userFileter = [];
 </script>
 
 <style>
-  .section-table {
+  /* .section-table {
     margin-top: 30px;
-  }
+  } */
 </style>
 
-<hr />
 <section class="section-table cid-rHfxX4jQGN" id="table1-4">
-
   <div class="container container-table">
     <Search />
     <div class="container scroll">
-      <table class="table isSearch" cellspacing="0">
-        <thead>
-          <tr class="table-heads ">
-            <th class="head-item mbr-fonts-style display-5">รหัส</th>
-            <th class="head-item mbr-fonts-style display-5">ชื่อ-สกุล</th>
-            <th class="head-item mbr-fonts-style display-5">วันเกิด</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each userFileter as user}
-            <tr>
-              <td class="body-item mbr-fonts-style display-7">
-                {user.data.id}
-              </td>
-              <td class="body-item mbr-fonts-style display-7">
-                {`${user.data.title} ${user.data.fname} ${user.data.lname}`}
-              </td>
-              <td class="body-item mbr-fonts-style display-7">
-                {`${user.data.birth}`}
-              </td>
+      {#if userFileter.length > 0}
+        <table class="table isSearch" cellspacing="0">
+          <thead>
+            <tr class="table-heads ">
+              <th class="head-item mbr-fonts-style display-5">รหัส</th>
+              <th class="head-item mbr-fonts-style display-5">ชื่อ-สกุล</th>
+              <th class="head-item mbr-fonts-style display-5">วันเกิด</th>
             </tr>
-          {/each}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {#each userFileter as user}
+              <tr>
+                <td class="body-item mbr-fonts-style display-7">
+                  {user.data.id}
+                </td>
+                <td class="body-item mbr-fonts-style display-7">
+                  {`${user.data.title} ${user.data.fname} ${user.data.lname}`}
+                </td>
+                <td class="body-item mbr-fonts-style display-7">
+                  {`${user.data.birth}`}
+                </td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      {/if}
     </div>
     <div class="container table-info-container">
       <div class="row info">
@@ -56,4 +57,5 @@
       </div>
     </div>
   </div>
+
 </section>
