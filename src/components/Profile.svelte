@@ -12,6 +12,11 @@
     })
   });
 
+  function scrollingDiv(ev) {
+    const element = ev.target || ev.srcElement;
+      window.scrollTo(0, document.getElementById("register").offsetTop + 700);
+  }
+
   function initLineLiff() {
     liff
       .init({
@@ -81,7 +86,7 @@
             </div>
             <p style="color:white;">สถานะ : {statusMessage}</p>
             <div class="navbar-buttons mbr-section-btn">
-              <a class="btn btn-sm btn-primary display-4" href="#register">
+              <a class="btn btn-sm btn-primary display-4" on:click={(ev) => scrollingDiv(ev) } >
                 <span
                   class="btn-icon mbri-mobile mbr-iconfont mbr-iconfont-btn" />
                 ลงทะเบียน

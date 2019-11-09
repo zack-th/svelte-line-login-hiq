@@ -5,6 +5,7 @@
   import Table from "./Table.svelte";
   import { storeUserHIQ } from "../utils/store.js";
   import { onMount } from "svelte";
+  import { beforeUpdate, afterUpdate } from "svelte";
 
   // import './assets/datatables/jquery.data-tables.min.js'
   // import DataTable from './assets/datatables/data-tables.bootstrap4.min.js'
@@ -14,12 +15,12 @@
 
   onMount(() => {
     storeUserHIQ.subscribe(resp => {
-      console.log(resp)
+      console.log(resp);
       if (typeof resp === "object" && resp.length > 0) {
         userFileter = resp;
       } else {
         userOneFill = [resp["data"]];
-      } 
+      }
     });
   });
 
@@ -102,7 +103,10 @@
   // }
 </script>
 
-<Navbar />
-<Profile />
-<Table bind:userFileter={userFileter} bind:userOneFill={userOneFill} />
-<Footer />
+<div id="nav_bar">
+  <Navbar />
+  <Profile />
+  <Table bind:userFileter bind:userOneFill />
+  <Footer />
+
+</div>
