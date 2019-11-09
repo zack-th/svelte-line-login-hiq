@@ -105,11 +105,15 @@
     activeProgress.set(true);
     fetch(url)
       .then(async resp => {
+        console.log('then')
         activeProgress.set(false);
         userHIQ = await resp.json();
-        storeUserHIQ.set((type === "birth" && userHIQ.data.id) ? [{ key: userHIQ.keys, data: userHIQ.data }] : userHIQ || []);
+        const dtUser = (type === "birth" && userHIQ.data.id) ? [{ key: userHIQ.keys, data: userHIQ.data }] : userHIQ;
+        storeUserHIQ.set(dtUser);
       })
       .catch(err => {
+        console.log('catch')
+        storeUserHIQ.set([]);
         activeProgress.set(false);
         userHIQ = [];
       });

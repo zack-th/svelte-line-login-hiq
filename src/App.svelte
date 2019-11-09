@@ -7,5 +7,5 @@
 
 </style>
 
-<Loading active={true} temp="dots5" />
+<Loading active={true} temp="circle_square" />
 <Main />

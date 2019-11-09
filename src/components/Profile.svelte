@@ -1,21 +1,23 @@
 <script>
   import { onMount } from "svelte";
   import { storeUserHIQ, activeProgress } from "../utils/store.js";
-  let userId, statusMessage = "Loading...";
-  let displayName = 'Loading...';
+  let userId,
+    statusMessage = "Loading...";
+  let displayName = "Loading...";
   let pictureUrl = "assets/images/nopicture.jpg";
   let userHIQ = [];
 
   onMount(() => {
+    activeProgress.set(true);
     initLineLiff();
     storeUserHIQ.subscribe(resp => {
       userHIQ = resp;
-    })
+    });
   });
 
   function scrollingDiv(ev) {
     const element = ev.target || ev.srcElement;
-      window.scrollTo(0, document.getElementById("register").offsetTop + 550);
+    window.scrollTo(0, document.getElementById("register").offsetTop + 550);
   }
 
   function initLineLiff() {
@@ -28,6 +30,7 @@
         initGetUserProfile();
       })
       .catch(err => {
+        activeProgress.set(false);
         window.alert("Error getting profile: " + error);
       });
   }
@@ -36,24 +39,24 @@
     liff
       .getProfile()
       .then(function(profile) {
+        activeProgress.set(false);
         userId = profile.userId;
-        displayName = profile.displayName || 'Loading...';
+        displayName = profile.displayName || "Loading...";
         pictureUrl = profile.pictureUrl;
         statusMessage = profile.statusMessage;
         // toggleProfileData();
       })
       .catch(function(error) {
+        activeProgress.set(false);
         // window.alert('Error getting profile: ' + error);
       });
   }
 </script>
 
 <style>
-
   .panel-item {
     border-radius: 10px;
   }
-
 </style>
 
 <section
@@ -90,10 +93,13 @@
               {displayName}
             </div>
             <p style="color:white;">สถานะ : {statusMessage}</p>
-            <div class="navbar-buttons mbr-section-btn">
-              <a style="cursor:pointer;" class="btn btn-sm btn-primary display-4" on:click={(ev) => scrollingDiv(ev) } >
+            <div style="margin-top:20px;" class="navbar-buttons mbr-section-btn">
+              <a
+                style="cursor:pointer;"
+                class="btn btn-sm btn-primary display-4"
+                on:click={ev => scrollingDiv(ev)}>
                 <span
-                  class="btn-icon mbri-mobile mbr-iconfont mbr-iconfont-btn" />
+                  class="btn-icon mbri-edit mbr-iconfont mbr-iconfont-btn" />
                 ลงทะเบียน
               </a>
             </div>

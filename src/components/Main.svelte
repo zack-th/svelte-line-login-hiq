@@ -10,16 +10,15 @@
   // import './assets/datatables/jquery.data-tables.min.js'
   // import DataTable from './assets/datatables/data-tables.bootstrap4.min.js'
   let userFileter = [];
-  let userOneFill = [];
   const production = !!process.env.NODE_ENV;
 
   onMount(() => {
     storeUserHIQ.subscribe(resp => {
       if (typeof resp === "object" && resp.length > 0) {
+        console.log('length > 1')
         userFileter = resp;
-        userOneFill = [];
       } else {
-        userOneFill = [resp["data"]];
+        console.log('[]')
         userFileter = [];
       }
     });
@@ -107,7 +106,7 @@
 <div id="nav_bar">
   <Navbar />
   <Profile />
-  <Table bind:userFileter bind:userOneFill />
+  <Table bind:userFileter />
   <Footer />
 
 </div>

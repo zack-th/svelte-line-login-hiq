@@ -23,4 +23,13 @@
       <span />
     </div>
   {/if}
+
+  {#if temp === 'circle_square'}
+    <div style="z-index:99;position:fixed;" id="circle_square">
+      <span />
+      <span />
+      <span />
+      <span />
+    </div>
+  {/if}
 {/if}
