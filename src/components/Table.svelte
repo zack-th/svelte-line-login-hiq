@@ -51,7 +51,8 @@
     margin-bottom: 10px;
   }
 
-  .btn-primary, .btn-primary:active {
+  .btn-primary,
+  .btn-primary:active {
     background-color: #054d20 !important;
     border-color: #054d20 !important;
     color: #ffffff !important;
@@ -61,6 +62,20 @@
     background-color: #db2332 !important;
     border-color: #db2332 !important;
     color: #ffffff !important;
+  }
+
+  .line-ico {
+    width: 80px;
+    height: 80px;
+  }
+
+  .block-line {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .display-7 {
+    font-family: 'Pridi', serif !important;
   }
 </style>
 
@@ -74,7 +89,7 @@
           <thead>
             <tr class="table-heads ">
               <th class="head-item mbr-fonts-style display-5">รหัส</th>
-              <th class="head-item mbr-fonts-style display-5">ชื่อ-สกุล</th>
+              <th class="head-item mbr-fonts-style display-5">ชื่อ</th>
               <th class="head-item mbr-fonts-style display-5">วันเกิด</th>
               <th class="head-item mbr-fonts-style display-5">ลงทะเบียน</th>
             </tr>
@@ -82,7 +97,7 @@
           <tbody>
             {#each userFileter as user, i}
               <tr
-                style={i % 2 === 0 ? 'background:#c2e8ee;' : 'background:#f8ecc7;'}>
+                style={i % 2 === 0 ? 'background:#e3e3e3;' : 'background:#cdcdcd;'}>
                 <td class="body-item mbr-fonts-style display-7">
                   {user.data.id}
                 </td>
@@ -110,10 +125,15 @@
 
 {#if showRegisForm && userFileter.length > 0}
   <section class="section-table register-form" id="table1-4">
+    <div class="block-line">
+      <img class="line-ico" src="./assets/images/line-icon.png" />
+    </div>
     <h2
-      style="color:#f30000 !important;"
+      style="color:white !important;"
       class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
-      ข้อมูลของคุณ
+      โปรดตรวจสอบ
+      <br />
+      ข้อมูลของคุณก่อนบันทึก
     </h2>
     <div class="container">
       <div class="row search">
@@ -162,9 +182,13 @@
               placeholder="ใส่ ชื่อ/สกุล เพื่อค้นหา" />
           </div>
           <hr />
+        </div>
+        <div style="text-align:center;" class="col-md-12">
           <div style="margin-top:20px;" class="navbar-buttons mbr-section-btn">
             <a style="cursor:pointer;" class="btn btn-xl btn-primary">
-              <span class="btn-icon mbri-save mbr-iconfont-btn display-7">&nbsp; บึนทึกข้อมูล</span>
+              <i class="mbri-save"><span class="btn-icon mbr-iconfont-btn display-7">
+                &nbsp; บึนทึกข้อมูล
+              </span>
             </a>
           </div>
         </div>

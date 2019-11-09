@@ -25,7 +25,7 @@
         <div class="media-wrap">
           <a href="#">
             <img
-              src="assets/images/h1tvzgy-618x618.jpg"
+              src="assets/images/hiq-logo.png"
               alt="Mobirise"
               title="" />
           </a>

@@ -87,19 +87,20 @@
               <img src={pictureUrl} />
             </div>
             <div
-              style="color:#f30000;"
+              style="color:#727272;"
               class="mbr-author-name mbr-bold mbr-fonts-style mbr-white
               display-2">
               {displayName}
             </div>
-            <p style="color:white;">สถานะ : {statusMessage}</p>
+            <p style="color: #f30105;">สถานะ : {statusMessage}</p>
             <div style="margin-top:20px;" class="navbar-buttons mbr-section-btn">
               <a
                 style="cursor:pointer;"
-                class="btn btn-sm btn-primary display-4"
+                class="btn btn-sm btn-danger display-7"
                 on:click={ev => scrollingDiv(ev)}>
+                <i class="mbri-edit"></i>
                 <span
-                  class="btn-icon mbri-edit mbr-iconfont mbr-iconfont-btn" />
+                  class="btn-icon mbr-iconfont mbr-iconfont-btn" />
                 ลงทะเบียน
               </a>
             </div>

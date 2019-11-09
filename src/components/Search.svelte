@@ -95,9 +95,19 @@
   function getFirebaseDb(type, value) {
     userHIQ = [];
     if (type === "birth") {
-      fetchFunc(production ? `/getusers?birth=${value}` : `http://localhost:3000/getusers?birth=${value}`,"birth");
+      fetchFunc(
+        production
+          ? `/getusers?birth=${value}`
+          : `http://localhost:3000/getusers?birth=${value}`,
+        "birth"
+      );
     } else if (type === "name") {
-      fetchFunc( production ? `/getusers?name=${value}` : `http://localhost:3000/getusers?name=${value}`, "name");
+      fetchFunc(
+        production
+          ? `/getusers?name=${value}`
+          : `http://localhost:3000/getusers?name=${value}`,
+        "name"
+      );
     }
   }
 
@@ -105,14 +115,17 @@
     activeProgress.set(true);
     fetch(url)
       .then(async resp => {
-        console.log('then')
+        console.log("then");
         activeProgress.set(false);
         userHIQ = await resp.json();
-        const dtUser = (type === "birth" && userHIQ.data.id) ? [{ key: userHIQ.keys, data: userHIQ.data }] : userHIQ;
+        const dtUser =
+          type === "birth" && userHIQ.data.id
+            ? [{ key: userHIQ.keys, data: userHIQ.data }]
+            : userHIQ;
         storeUserHIQ.set(dtUser);
       })
       .catch(err => {
-        console.log('catch')
+        console.log("catch");
         storeUserHIQ.set([]);
         activeProgress.set(false);
         userHIQ = [];
@@ -136,6 +149,7 @@
   <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
     ค้นหารหัสพนักงาน
   </h2>
+  <hr />
   <div class="container">
     <div class="row search">
       <div class="col-md-6" />
@@ -167,6 +181,7 @@
         </div>
       </div>
     </div>
+    <hr />
   </div>
 
 </div>

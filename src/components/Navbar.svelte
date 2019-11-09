@@ -27,7 +27,7 @@
       <div class="navbar-brand">
         <span class="navbar-logo">
           <img
-            src="assets/images/h1tvzgy-618x618.jpg"
+            src="assets/images/hiq-logo.png"
             alt="Mobirise"
             title=""
             style="height: 3.8rem;" />
@@ -60,7 +60,7 @@
           </a>
           <div class="dropdown-menu">
             <a
-              class="dropdown-item text-primary display-4"
+              class="dropdown-item text-success display-4"
               href="https://mobirise.co">
               New Item
             </a>
@@ -68,7 +68,7 @@
         </li>
       </ul>
       <div class="navbar-buttons mbr-section-btn">
-        <a class="btn btn-sm btn-primary display-4" href="ติดต่อสอบถาม">
+        <a class="btn btn-sm btn-success display-4" href="ติดต่อสอบถาม">
           <span class="btn-icon mbri-mobile mbr-iconfont mbr-iconfont-btn" />
           ติดต่อสอบถาม
         </a>
