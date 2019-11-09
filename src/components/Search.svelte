@@ -119,13 +119,13 @@
         activeProgress.set(false);
         userHIQ = await resp.json();
         const dtUser =
-          type === "birth" && userHIQ.data.id
+          type === "birth" && (userHIQ.data && userHIQ.data.id)
             ? [{ key: userHIQ.keys, data: userHIQ.data }]
             : userHIQ;
         storeUserHIQ.set(dtUser);
       })
       .catch(err => {
-        console.log("catch");
+        console.log("catch", err);
         storeUserHIQ.set([]);
         activeProgress.set(false);
         userHIQ = [];

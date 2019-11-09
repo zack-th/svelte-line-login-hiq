@@ -1200,7 +1200,6 @@ section.lazy-placeholder:after {
 .cid-rHfxX4jQGN table {
   width: 100% !important;
   margin-top: 6px;
-  border: 1px solid #cccccc;
   margin-bottom: 0;
 }
 .cid-rHfxX4jQGN table th {
@@ -1209,7 +1208,6 @@ section.lazy-placeholder:after {
   border-bottom: none;
 }
 .cid-rHfxX4jQGN table th:hover {
-  background: #cccccc;
   color: #000000;
 }
 .cid-rHfxX4jQGN table td {

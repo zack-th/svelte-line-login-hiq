@@ -77,6 +77,10 @@
   .display-7 {
     font-family: 'Pridi', serif !important;
   }
+
+  table {
+    border-radius: 15px;
+  }
 </style>
 
 <section class="section-table cid-rHfxX4jQGN" id="table1-4">
@@ -115,6 +119,11 @@
               </tr>
             {/each}
           </tbody>
+          <tfoot>
+            <tr class="table-foot ">
+              <th/>
+            </tr>
+          </tfoot>
         </table>
       {/if}
 
