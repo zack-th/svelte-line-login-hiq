@@ -38,16 +38,27 @@
      [ 01 Start Basics ]
 -----------------------------------------------------------------*/
 
-body{
+html, body{
   font-size:15px;
+  font-family: 'Pridi', serif;
+  scroll-behavior: smooth;
 }
 
 h1,h2,h3,h4,h5,h6{
-  font-family:Poppins;
+  font-family:Kanit;
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 
 p{
-  font-family:Roboto;
+  font-family:Kanit;
+}
+
+a {
+  font-family:Kanit;
 }
 
 a:hover {
@@ -723,7 +734,6 @@ div#teams {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  margin: 8px;
   min-width: 250px;
   max-width: 310px;
   width: 100%;
