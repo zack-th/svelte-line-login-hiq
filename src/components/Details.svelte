@@ -3,60 +3,14 @@
 </script>			<style>
 			
 </style> -->
-<div id="testimonials" class="testimonials">
+<div id="details" class="testimonials">
   <div class="cd-testimonials-wrapper cd-container">
-    <ul class="cd-testimonials">
-      <li>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <div class="cd-author">
-          <img src="img/avatar-1.jpg" alt="Author image" />
-          <ul class="cd-author-info">
-            <li>MyName</li>
-            <li>CEO, AmberCreative</li>
-          </ul>
-        </div>
-      </li>
-
-      <li>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Necessitatibus ea, perferendis error repudiandae numquam dolor fuga
-          temporibus. Unde omnis, consequuntur.
-        </p>
-        <div class="cd-author">
-          <img src="img/avatar-2.jpg" alt="Author image" />
-          <ul class="cd-author-info">
-            <li>MyName</li>
-            <li>Designer, CodyHouse</li>
-          </ul>
-        </div>
-      </li>
-
-      <li>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam totam
-          nulla est, illo molestiae maxime officiis, quae ad, ipsum vitae
-          deserunt molestias eius alias.
-        </p>
-        <div class="cd-author">
-          <img src="img/avatar-3.jpg" alt="Author image" />
-          <ul class="cd-author-info">
-            <li>MyName</li>
-            <li>CEO, CompanyName</li>
-          </ul>
-        </div>
-      </li>
-
-    </ul>
-    <!-- cd-testimonials -->
-
-    <a href="#0" class="cd-see-all">See all</a>
+    <span>&#8220;</span>
+    <h1 style="color:yellow;">ลงทะเบียนเพื่อ ลุ้นของรางวัล ภายในงาน</h1>
+    <span>&#8221;</span>
   </div>
   <!-- cd-testimonials-wrapper -->
-
+                   
   <div class="cd-testimonials-all">
     <div class="cd-testimonials-all-wrapper">
       <ul>

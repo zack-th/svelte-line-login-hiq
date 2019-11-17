@@ -1,8 +1,8 @@
 <script>
-  import { storeUserHIQ, activeProgress } from "./utils/store.js";
+  import { storeUserHIQ, activeProgress } from "src/utils/store.js";
   let active = false;
-  export let temp = "circle1";
-  activeProgress.subscribe(val => (active = val));
+  export let temp = "dots5";
+  activeProgress.subscribe(val => active = val);
   // #Ref Loading https://codepen.io/mrsahar/pen/pMxyrE
 </script>
 
@@ -22,6 +22,11 @@
       <span />
       <span />
     </div>
+  {/if}
+
+  {#if temp === 'type'}
+    <div class="word">HAPPY&nbsp;NEW&nbsp;YEAR...</div>
+    <div class="overlay"/>
   {/if}
 
   {#if temp === 'circle_square'}

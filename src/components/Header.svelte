@@ -61,7 +61,7 @@
           </div>
           <div>
             <h5>{displayName}</h5>
-            <h3>สถานะ : {statusMessage}</h3>
+            <!-- <h3>สถานะ : {statusMessage}</h3> -->
             <a href="#features" class="button-style showcase-btn">ลงทะเบียน</a>
             <!-- <div class="showcase-button">
               <div class="icons">
